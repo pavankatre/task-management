@@ -1,0 +1,24 @@
+<div class="container mt-md-5">
+    <div class="row">
+        <!-- this is filter  -->
+        <div class="col-sm-12">
+            <input type="text" class="form-control" placeholder="Search by Status" [(ngModel)]="searchStatus">
+        </div>
+        <div class="col-sm-4" *ngFor="let task of taskList | filter: searchStatus ">
+            <div class="card border" style="width: 18rem;">
+                <!-- show all task  -->
+                <div class="card-body">
+                    <h4 class="card-title"> Title:-{{task.taskTitle}}</h4>
+                    <h5 class="card-subtitle mb-2 text-muted"> Due Date :-{{task.duedate}}</h5>
+                    <h5 class="card-subtitle mb-2 text-muted" >
+                        <i class="pi pi-times"></i>Status:- {{task.status}}</h5>
+                        <!-- this button used for task completed -->
+                        <button  type="button" icon="pi pi-check" (click)="statuForLeave(task,'completed')"
+                        label="Approve" class=" btn btn-success "
+                        *ngIf="task.status=='pending'">completed</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
